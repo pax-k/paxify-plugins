@@ -6,18 +6,15 @@ Defense-in-depth: CLAUDE.md, path-scoped rules, specialist agents, lifecycle hoo
 
 ## Install
 
-```bash
-# From the Claude Code CLI
-/plugin install path/to/agentic-init-plugin
-
-# Or test locally
-claude --plugin-dir ./agentic-init-plugin
+```shell
+/plugin marketplace add pax-k/paxify-plugins
+/plugin install agentic-init@paxify
 ```
 
 ## Usage
 
-```bash
-/agentic-init
+```shell
+/paxify:agentic-init
 ```
 
 The plugin analyzes your codebase and generates a complete `.claude/` directory tailored to your project.

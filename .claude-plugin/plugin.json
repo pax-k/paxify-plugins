@@ -1,5 +1,5 @@
 {
-  "name": "agentic-init",
+  "name": "paxify",
   "description": "Scaffolds the full .claude/ agentic engineering stack for TypeScript/monorepo projects. Defense-in-depth: CLAUDE.md, path-scoped rules, specialist agents, lifecycle hooks, and scoped permissions.",
   "version": "1.0.0",
   "author": {

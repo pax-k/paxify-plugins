@@ -5,6 +5,8 @@
 #
 # Placeholder: {{format_command}} — replaced by detected format command (e.g., "npx prettier --write", "npx biome format --write")
 
+
+set -euo pipefail
 INPUT=$(cat)
 FILE_PATH=$(echo "$INPUT" | jq -r '.tool_input.file_path // empty')
 

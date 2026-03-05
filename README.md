@@ -40,6 +40,11 @@ Specialist subagents with isolated context and scoped tools:
 - **reviewer.md** — adversarial reviewer with zero prior context
 - **debugger.md** — systematic root-cause debugging
 - **docs.md** — documentation updater
+- **judge.md** — neutral evaluator for competing implementations
+
+### .claude/skills/
+Reusable workflow templates:
+- **compete/SKILL.md** — runs 3 competing implementations (minimal, thorough, creative), judge picks the winner
 
 ### .claude/hooks/
 Shell scripts at lifecycle events. Exit 2 = blocked, no negotiation:

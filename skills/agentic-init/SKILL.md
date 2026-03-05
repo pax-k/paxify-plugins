@@ -33,6 +33,8 @@ Create the directory tree:
 │   ├── frontend/
 │   └── backend/
 ├── agents/
+├── skills/
+│   └── compete/
 └── hooks/
 ```
 
@@ -103,7 +105,7 @@ For each rule file:
 - Replace `{{test_runner}}` in testing.md
 - Replace `{{frontend_glob}}` in frontend/react-patterns.md from profile File Patterns.frontend-glob
 - Replace `{{backend_glob}}` in backend/api-design.md from profile File Patterns.backend-glob
-- Replace `{{db_layer}}` in backend/api-design.md from profile Stack.database
+- Replace `{{db_name}}` in backend/api-design.md from profile Stack.database (e.g., "Drizzle", "Prisma")
 - Replace `{{verify_command}}` in git-conventions.md
 - Replace `{{protected_branch}}` in git-conventions.md
 
@@ -126,7 +128,18 @@ For each agent file:
 
 Write each to `.claude/agents/[filename]`.
 
-### Step 7: Hooks
+### Step 7: Skills
+Read each template from `${CLAUDE_SKILL_DIR}/templates/skills/`.
+
+For each skill directory:
+- Read the `SKILL.md` template inside it.
+- Replace `{{verify_command}}` with profile Commands.verify.
+- Replace `{{test_command}}` with profile Commands.test.
+- Replace `{{protected_branch}}` with profile Identity.protected-branch.
+
+Write each to `.claude/skills/[skill-name]/SKILL.md`.
+
+### Step 8: Hooks
 Read each template from `${CLAUDE_SKILL_DIR}/templates/hooks/`.
 
 For `pre-bash-firewall.sh`:
@@ -137,7 +150,11 @@ For `pre-bash-firewall.sh`:
   - Similarly for other package managers
 
 For `protect-files.sh`:
-- Replace `{{lock_file}}` with detected lock file name
+- Replace `{{lock_file}}` with the lock file for the detected package manager:
+  - pnpm → `pnpm-lock.yaml`
+  - bun → `bun.lockb`
+  - yarn → `yarn.lock`
+  - npm → `package-lock.json`
 - Replace `{{package_manager}}` with detected package manager
 
 For `auto-format.sh`:
@@ -148,10 +165,10 @@ Write each to `.claude/hooks/[filename]`.
 
 Make all hook scripts executable: `chmod +x .claude/hooks/*.sh`
 
-### Step 8: Cleanup
+### Step 9: Cleanup
 Delete `.claude/_profile.md` — it was a temporary artifact.
 
-### Step 9: Summary
+### Step 10: Summary
 Print a summary of everything generated:
 
 ```
@@ -177,6 +194,10 @@ Generated the following files:
 - reviewer.md — adversarial code reviewer (zero prior context)
 - debugger.md — systematic root-cause debugger
 - docs.md — documentation updater
+- judge.md — neutral evaluator for competing implementations
+
+### .claude/skills/ (reusable workflows)
+- compete/SKILL.md — runs 3 competing implementations, judge picks the winner
 
 ### .claude/hooks/ (hard enforcement)
 - pre-bash-firewall.sh — blocks dangerous commands, enforces [pkg manager]

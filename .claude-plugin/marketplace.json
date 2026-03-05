@@ -1,0 +1,16 @@
+{
+  "name": "paxify",
+  "owner": {
+    "name": "Pax"
+  },
+  "metadata": {
+    "description": "Pax's Claude Code plugins"
+  },
+  "plugins": [
+    {
+      "name": "agentic-init",
+      "source": ".",
+      "description": "Scaffolds the full .claude/ agentic engineering stack for TypeScript/monorepo projects. Defense-in-depth: CLAUDE.md, path-scoped rules, specialist agents, lifecycle hooks, and scoped permissions."
+    }
+  ]
+}
